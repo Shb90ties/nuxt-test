@@ -6,17 +6,23 @@
             <div class="center">
               <nuxt-link class="the_button" to="/test"></nuxt-link>
             </div>
+            <test-comp></test-comp>
+            <test-comp></test-comp>
+            <test-comp></test-comp>
+            <test-comp></test-comp>
       </div>
     </div>
 </template>
 
 <script>
 import AppLogo from '~/components/AppLogo.vue';
+import TestComp from '~/components/TestComp.vue';
 import axios from 'axios';
 
 export default {
   components: {
-    AppLogo
+    AppLogo,
+    TestComp
   },
   data() {
     return {
@@ -24,17 +30,13 @@ export default {
     }
   },
   created() {
-    console.log('creation!');
   },
   mounted() {
-    console.log('moun        ted!!', this.$store);
-
-    this.$nextTick(this.testAxios);
   },
   methods: {
     async testAxios() {
       // this.test.axios = await axios.get('https://reqres.in/api/users?page=2');
-      console.log('binfg!', this.test.axios);
+      // console.log('binfg!', this.test.axios);
     }
   }
 }

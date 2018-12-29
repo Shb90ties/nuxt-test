@@ -75,15 +75,15 @@ Vue.directive('y2-sticky', {
         }
     },
     unbind: function (e1, binding, vnode) {
-        let compId = vnode.context._uid;
         // remove intervals
-        if (typeof window.waitForStickyIE[compId] !== 'undefined') {
+        if (window.waitForStickyIE && typeof window.waitForStickyIE[compId] !== 'undefined') {
+            let compId = vnode.context._uid;
             for (let interval of window.waitForStickyIE[compId])
                 clearInterval(interval);
             delete window.waitForStickyIE[compId];
         }
         // remove event listeners
-        if (typeof vnode.context.$stickyObjs !== 'undefined') {
+        if (vnode.context && typeof vnode.context.$stickyObjs !== 'undefined') {
             for (let sticky of vnode.context.$stickyObjs)
                 sticky.destroy();
             delete vnode.context.$stickyObjs;

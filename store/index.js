@@ -6,7 +6,7 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       counter: 0,
-      useSticky: false
+      useSticky: true
     },
     mutations
   })
