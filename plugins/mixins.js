@@ -1,17 +1,30 @@
 import Vue from 'vue';
+import EmptyComp from '../components/EmptyComp.vue';
 
-Vue.mixin({
-    beforeMount() {
-        if (this.$route && this.$route.query && this.$route.query['disable-mem-leak-test']
-                && typeof this.$route.query['disable-mem-leak-test'].toUpperCase === 'function') {
-            let query = this.$route.query['disable-mem-leak-test'].toUpperCase();
-            let compName = (typeof this._name === 'string') ? this._name.replace(/<|>/g, '').toUpperCase() : null;
-            if (!compName || (query.indexOf(compName) === -1)) return;
-            console.log('noo!');
+const emptyCompObj = Vue.component('empty-comp', EmptyComp);
+
+export default ({ app }) => {
+    if (typeof app.memQueryLeak === 'undefined') {
+        let query = (app && app.context && app.context.route && app.context.route.query) ? app.context.route.query : {};
+        if (query['disable-mem-leak-test'] && typeof query['disable-mem-leak-test'] === 'string') {
+            let compArr = query['disable-mem-leak-test'].split(',');
+            app.memQueryLeak = {};
+            for (let comp of compArr) {
+                app.memQueryLeak[comp] = true;
+            }
         }
-        console.log('well?', this._name);
-    },
-    beforeDestroy() {
-        console.log('ah shit!');
     }
-})
+
+    Vue.mixin({
+        created() {
+            if (typeof app.memQueryLeak !== 'undefined') {
+                for (let i in this.$options.components) {
+                    let name = this.$options.components[i].name ? this.$options.components[i].name : null;
+                    if (name && app.memQueryLeak[name]) {
+                        this.$options.components[i] = emptyCompObj;
+                    }
+                }
+            }
+        },
+    });
+}

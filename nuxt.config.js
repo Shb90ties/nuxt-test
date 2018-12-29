@@ -15,7 +15,7 @@ module.exports = {
     ]
   },
   plugins: [
-    { src: '@plugins/mixins.js', ssr: false },
+    '@plugins/mixins.js',
     { src: '@plugins/y2-sticky.js', ssr: false }
   ],
   /*

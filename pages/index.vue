@@ -20,6 +20,7 @@ import TestComp from '~/components/TestComp.vue';
 import axios from 'axios';
 
 export default {
+  name: 'index',
   components: {
     AppLogo,
     TestComp

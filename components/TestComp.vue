@@ -2,12 +2,22 @@
     <div class="test_comp"
             :style="{top: top}">
         <h1>{{this._uid}}</h1>
+        <test-comp-child></test-comp-child>
+        <test-comp-child></test-comp-child>
+        <test-comp-child></test-comp-child>
+
+        <empty-comp></empty-comp>
     </div>
 </template>
 
 <script>
+    import TestCompChild from './TestCompChild.vue';
+
     export default {
         name: 'test-comp',
+        components: {
+            TestCompChild
+        },
         data() {
             return {
                 top: '10px',
