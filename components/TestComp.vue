@@ -2,6 +2,15 @@
     <div class="test_comp"
             :style="{top: top}">
         <h1>{{this._uid}}</h1>
+
+        <test-comp-child-one></test-comp-child-one>
+         <test-comp-child-one></test-comp-child-one>
+          <test-comp-child-one></test-comp-child-one>
+
+         <test-comp-child-two></test-comp-child-two>
+         <test-comp-child-two></test-comp-child-two>
+         <test-comp-child-two></test-comp-child-two>
+
         <test-comp-child></test-comp-child>
         <test-comp-child></test-comp-child>
         <test-comp-child></test-comp-child>
@@ -12,10 +21,14 @@
 
 <script>
     import TestCompChild from './TestCompChild.vue';
+    import TestCompChildOne from '~/components/TestCompChildOne.vue';
+    import TestCompChildTwo from '~/components/TestCompChildTwo.vue';
 
     export default {
         name: 'test-comp',
         components: {
+            TestCompChildOne,
+            TestCompChildTwo,
             TestCompChild
         },
         data() {
@@ -26,17 +39,14 @@
         },
         beforeMount() {
             this.top = (Math.floor(Math.random() * 700) + 1) + 'px';
-            this.willDestroy = ((Math.floor(Math.random() * 4) + 1) <= 2);
-            if (!this.willDestroy)
-                console.log('%c creates memory leak '+this._uid, 'background-color: red; color: black;');
         },
         mounted() {
-            this.createMemoryLeak();
+            // this.createMemoryLeak();
         },
         beforeDestroy() {
-            if (this.willDestroy) {
-                window.removeEventListener('scroll', this.scroll);
-            }
+            // if (this.willDestroy) {
+            //     window.removeEventListener('scroll', this.scroll);
+            // }
         },
         methods: {
             createMemoryLeak() {

@@ -16,22 +16,19 @@
             this.top = (Math.floor(Math.random() * 10) + 1) + 'px';
         },
         mounted() {
-            window.addEventListener('scroll', this.scrolly);
-        },
-        methods: {
-            scrolly() {
-                console.log('sdaF?DS?F ?? ? ? ');
-            }
+            // window.addEventListener('scroll', () => {
+            //     console.log('?DS?F?SDF?');
+            // });
         }
     }
 </script>
 
 <style>
     .test_comp_child {
-        border: 1px solid black;
+        border: 1px solid green;
         background: transparent;
-        width: 5px;
-        height: 5px;
+        width: 7px;
+        height: 7px;
         position: absolute;
         top: 3px;
         left: 5px;

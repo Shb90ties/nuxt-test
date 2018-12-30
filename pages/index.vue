@@ -10,6 +10,33 @@
             <test-comp></test-comp>
             <test-comp></test-comp>
             <test-comp></test-comp>
+
+            <test-comp-one></test-comp-one>
+            <test-comp-one></test-comp-one>
+            <test-comp-one></test-comp-one>
+            <test-comp-one></test-comp-one>
+
+
+            <test-comp-two></test-comp-two>
+            <test-comp-two></test-comp-two>
+            <test-comp-two></test-comp-two>
+            <test-comp-two></test-comp-two>
+            <test-comp-two></test-comp-two>
+
+
+            <test-comp-three></test-comp-three>
+            <test-comp-three></test-comp-three>
+            <test-comp-three></test-comp-three>
+            <test-comp-three></test-comp-three>
+            <test-comp-three></test-comp-three>
+            <test-comp-three></test-comp-three>
+
+
+            <test-comp-four></test-comp-four>
+            <test-comp-four></test-comp-four>
+            <test-comp-four></test-comp-four>
+            <test-comp-four></test-comp-four>
+            <test-comp-four></test-comp-four>
       </div>
     </div>
 </template>
@@ -17,13 +44,21 @@
 <script>
 import AppLogo from '~/components/AppLogo.vue';
 import TestComp from '~/components/TestComp.vue';
+import TestCompOne from '~/components/TestCompOne.vue';
+import TestCompTwo from '~/components/TestCompTwo.vue';
+import TestCompThree from '~/components/TestCompThree.vue';
+import TestCompFour from '~/components/TestCompFour.vue';
 import axios from 'axios';
 
 export default {
   name: 'index',
   components: {
     AppLogo,
-    TestComp
+    TestComp,
+    TestCompOne,
+    TestCompTwo,
+    TestCompThree,
+    TestCompFour
   },
   data() {
     return {
